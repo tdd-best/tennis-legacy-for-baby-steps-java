@@ -42,6 +42,12 @@ public class TennisTest {
     }
 
     @Test
+    public void love_forty() {
+        givenSecondPlayerScore(3);
+        scoreShouldBe("love forty");
+    }
+
+    @Test
     public void fifteen_all() {
         givenFirstPlayerScore(1);
         givenSecondPlayerScore(1);

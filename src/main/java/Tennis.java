@@ -21,6 +21,9 @@ public class Tennis {
         if (firstPlayerScoreTimes == 0 && secondPlayerScoreTimes == 2) {
             return "love thirty";
         }
+        if (firstPlayerScoreTimes == 0 && secondPlayerScoreTimes == 3) {
+            return "love forty";
+        }
         if (firstPlayerScoreTimes == 1 && secondPlayerScoreTimes == 1) {
             return "fifteen all";
         }
