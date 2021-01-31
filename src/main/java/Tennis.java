@@ -20,7 +20,10 @@ public class Tennis {
     }
 
     public String score() {
-        if (firstPlayerScoreTimes == 0 && secondPlayerScoreTimes == 0) {
+        if (firstPlayerScoreTimes == secondPlayerScoreTimes) {
+            if (firstPlayerScoreTimes >= 3) {
+                return deuce;
+            }
             return scoreLookup.get(firstPlayerScoreTimes) + " " + all;
         }
         if (firstPlayerScoreTimes < 4 && secondPlayerScoreTimes == 0) {
@@ -28,18 +31,6 @@ public class Tennis {
         }
         if (firstPlayerScoreTimes == 0 && secondPlayerScoreTimes < 4) {
             return scoreLookup.get(firstPlayerScoreTimes) + " " + scoreLookup.get(secondPlayerScoreTimes);
-        }
-        if (firstPlayerScoreTimes == 1 && secondPlayerScoreTimes == 1) {
-            return scoreLookup.get(firstPlayerScoreTimes) + " " + all;
-        }
-        if (firstPlayerScoreTimes == 2 && secondPlayerScoreTimes == 2) {
-            return scoreLookup.get(firstPlayerScoreTimes) + " " + all;
-        }
-        if (firstPlayerScoreTimes == 3 && secondPlayerScoreTimes == 3) {
-            return deuce;
-        }
-        if (firstPlayerScoreTimes == 4 && secondPlayerScoreTimes == 4) {
-            return deuce;
         }
         if (firstPlayerScoreTimes == 4 && secondPlayerScoreTimes == 3) {
             return firstPlayerName + " adv";
