@@ -1,14 +1,18 @@
+import java.util.HashMap;
+
 public class Tennis {
     private final String all = "all";
     private final String deuce = "deuce";
     private final String firstPlayerName;
     private final String secondPlayerName;
+    private final HashMap<Integer, String> scoreLookup = new HashMap<>() {{
+        put(0, "love");
+        put(1, "fifteen");
+        put(2, "thirty");
+        put(3, "forty");
+    }};
     private int secondPlayerScoreTimes;
     private int firstPlayerScoreTimes;
-    private String love;
-    private String fifteen;
-    private String thirty;
-    private String forty;
 
     public Tennis() {
         firstPlayerName = "Joey";
@@ -16,36 +20,32 @@ public class Tennis {
     }
 
     public String score() {
-        love = "love";
-        fifteen = "fifteen";
-        thirty = "thirty";
-        forty = "forty";
         if (firstPlayerScoreTimes == 0 && secondPlayerScoreTimes == 0) {
-            return love + " " + all;
+            return scoreLookup.get(firstPlayerScoreTimes) + " " + all;
         }
         if (firstPlayerScoreTimes == 1 && secondPlayerScoreTimes == 0) {
-            return fifteen + " " + love;
+            return scoreLookup.get(firstPlayerScoreTimes) + " " + scoreLookup.get(secondPlayerScoreTimes);
         }
         if (firstPlayerScoreTimes == 2 && secondPlayerScoreTimes == 0) {
-            return thirty + " " + love;
+            return scoreLookup.get(firstPlayerScoreTimes) + " " + scoreLookup.get(secondPlayerScoreTimes);
         }
         if (firstPlayerScoreTimes == 3 && secondPlayerScoreTimes == 0) {
-            return forty + " " + love;
+            return scoreLookup.get(firstPlayerScoreTimes) + " " + scoreLookup.get(secondPlayerScoreTimes);
         }
         if (firstPlayerScoreTimes == 0 && secondPlayerScoreTimes == 1) {
-            return love + " " + fifteen;
+            return scoreLookup.get(firstPlayerScoreTimes) + " " + scoreLookup.get(secondPlayerScoreTimes);
         }
         if (firstPlayerScoreTimes == 0 && secondPlayerScoreTimes == 2) {
-            return love + " " + thirty;
+            return scoreLookup.get(firstPlayerScoreTimes) + " " + scoreLookup.get(secondPlayerScoreTimes);
         }
         if (firstPlayerScoreTimes == 0 && secondPlayerScoreTimes == 3) {
-            return love + " " + forty;
+            return scoreLookup.get(firstPlayerScoreTimes) + " " + scoreLookup.get(secondPlayerScoreTimes);
         }
         if (firstPlayerScoreTimes == 1 && secondPlayerScoreTimes == 1) {
-            return fifteen + " " + all;
+            return scoreLookup.get(firstPlayerScoreTimes) + " " + all;
         }
         if (firstPlayerScoreTimes == 2 && secondPlayerScoreTimes == 2) {
-            return thirty + " " + all;
+            return scoreLookup.get(firstPlayerScoreTimes) + " " + all;
         }
         if (firstPlayerScoreTimes == 3 && secondPlayerScoreTimes == 3) {
             return deuce;
