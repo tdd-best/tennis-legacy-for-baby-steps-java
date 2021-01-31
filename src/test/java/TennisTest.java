@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TennisTest {
 
-    private Tennis tennis = new Tennis();
+    private Tennis tennis = new Tennis("Joey", "Tom");
 
     @Test
     public void love_all() {

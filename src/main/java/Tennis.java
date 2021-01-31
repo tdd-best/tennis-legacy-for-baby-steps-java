@@ -3,8 +3,6 @@ import java.util.HashMap;
 import static java.lang.Math.abs;
 
 public class Tennis {
-    private final String all = "all";
-    private final String deuce = "deuce";
     private final String firstPlayerName;
     private final String secondPlayerName;
     private final HashMap<Integer, String> scoreLookup = new HashMap<>() {{
@@ -16,22 +14,15 @@ public class Tennis {
     private int secondPlayerScoreTimes;
     private int firstPlayerScoreTimes;
 
-    public Tennis() {
-        firstPlayerName = "Joey";
-        secondPlayerName = "Tom";
+    public Tennis(String firstPlayerName, String secondPlayerName) {
+        this.firstPlayerName = firstPlayerName;
+        this.secondPlayerName = secondPlayerName;
     }
 
     public String score() {
-        if (isSameScore()) {
-            if (isDeuce()) {
-                return deuce;
-            }
-            return sameScore();
-        }
-        if (isLookupScore()) {
-            return lookupScore();
-        }
-        return String.format("%s %s", advPlayer(), isAdv() ? "adv" : "win");
+        return isSameScore()
+                ? isDeuce() ? "deuce" : sameScore()
+                : isLookupScore() ? lookupScore() : advState();
     }
 
     public void firstPlayerScore() {
@@ -42,13 +33,16 @@ public class Tennis {
         this.secondPlayerScoreTimes++;
     }
 
+    private String advState() {
+        return String.format("%s %s", advPlayer(), isAdv() ? "adv" : "win");
+    }
+
     private boolean isAdv() {
         return abs(firstPlayerScoreTimes - secondPlayerScoreTimes) == 1;
     }
 
     private String advPlayer() {
-        String advPlayer = firstPlayerScoreTimes > secondPlayerScoreTimes ? this.firstPlayerName : this.secondPlayerName;
-        return advPlayer;
+        return firstPlayerScoreTimes > secondPlayerScoreTimes ? this.firstPlayerName : this.secondPlayerName;
     }
 
     private boolean isLookupScore() {
@@ -64,6 +58,7 @@ public class Tennis {
     }
 
     private String sameScore() {
+        String all = "all";
         return scoreLookup.get(firstPlayerScoreTimes) + " " + all;
     }
 
