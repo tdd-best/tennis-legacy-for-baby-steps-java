@@ -1,5 +1,7 @@
 import java.util.HashMap;
 
+import static java.lang.Math.abs;
+
 public class Tennis {
     private final String all = "all";
     private final String deuce = "deuce";
@@ -29,19 +31,7 @@ public class Tennis {
         if (isLookupScore()) {
             return lookupScore();
         }
-        if (firstPlayerScoreTimes == 4 && secondPlayerScoreTimes == 3) {
-            return advPlayer() + " adv";
-        }
-        if (firstPlayerScoreTimes == 3 && secondPlayerScoreTimes == 4) {
-            return advPlayer() + " adv";
-        }
-        if (firstPlayerScoreTimes == 5 && secondPlayerScoreTimes == 3) {
-            return advPlayer() + " win";
-        }
-        if (firstPlayerScoreTimes == 3 && secondPlayerScoreTimes == 5) {
-            return advPlayer() + " win";
-        }
-        return null;
+        return String.format("%s %s", advPlayer(), isAdv() ? "adv" : "win");
     }
 
     public void firstPlayerScore() {
@@ -50,6 +40,10 @@ public class Tennis {
 
     public void secondPlayerScore() {
         this.secondPlayerScoreTimes++;
+    }
+
+    private boolean isAdv() {
+        return abs(firstPlayerScoreTimes - secondPlayerScoreTimes) == 1;
     }
 
     private String advPlayer() {
