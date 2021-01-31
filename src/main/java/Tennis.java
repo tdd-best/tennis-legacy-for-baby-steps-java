@@ -26,10 +26,7 @@ public class Tennis {
             }
             return scoreLookup.get(firstPlayerScoreTimes) + " " + all;
         }
-        if (firstPlayerScoreTimes < 4 && secondPlayerScoreTimes == 0) {
-            return scoreLookup.get(firstPlayerScoreTimes) + " " + scoreLookup.get(secondPlayerScoreTimes);
-        }
-        if (firstPlayerScoreTimes == 0 && secondPlayerScoreTimes < 4) {
+        if (firstPlayerScoreTimes < 4 && secondPlayerScoreTimes < 4) {
             return scoreLookup.get(firstPlayerScoreTimes) + " " + scoreLookup.get(secondPlayerScoreTimes);
         }
         if (firstPlayerScoreTimes == 4 && secondPlayerScoreTimes == 3) {
