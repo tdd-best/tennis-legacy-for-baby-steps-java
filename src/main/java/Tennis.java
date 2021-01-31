@@ -30,16 +30,16 @@ public class Tennis {
             return lookupScore();
         }
         if (firstPlayerScoreTimes == 4 && secondPlayerScoreTimes == 3) {
-            return firstPlayerName + " adv";
+            return advPlayer() + " adv";
         }
         if (firstPlayerScoreTimes == 3 && secondPlayerScoreTimes == 4) {
-            return secondPlayerName + " adv";
+            return advPlayer() + " adv";
         }
         if (firstPlayerScoreTimes == 5 && secondPlayerScoreTimes == 3) {
-            return firstPlayerName + " win";
+            return advPlayer() + " win";
         }
         if (firstPlayerScoreTimes == 3 && secondPlayerScoreTimes == 5) {
-            return secondPlayerName + " win";
+            return advPlayer() + " win";
         }
         return null;
     }
@@ -50,6 +50,11 @@ public class Tennis {
 
     public void secondPlayerScore() {
         this.secondPlayerScoreTimes++;
+    }
+
+    private String advPlayer() {
+        String advPlayer = firstPlayerScoreTimes > secondPlayerScoreTimes ? this.firstPlayerName : this.secondPlayerName;
+        return advPlayer;
     }
 
     private boolean isLookupScore() {
