@@ -20,14 +20,14 @@ public class Tennis {
     }
 
     public String score() {
-        if (firstPlayerScoreTimes == secondPlayerScoreTimes) {
-            if (firstPlayerScoreTimes >= 3) {
+        if (isSameScore()) {
+            if (isDeuce()) {
                 return deuce;
             }
-            return scoreLookup.get(firstPlayerScoreTimes) + " " + all;
+            return sameScore();
         }
-        if (firstPlayerScoreTimes < 4 && secondPlayerScoreTimes < 4) {
-            return scoreLookup.get(firstPlayerScoreTimes) + " " + scoreLookup.get(secondPlayerScoreTimes);
+        if (isLookupScore()) {
+            return lookupScore();
         }
         if (firstPlayerScoreTimes == 4 && secondPlayerScoreTimes == 3) {
             return firstPlayerName + " adv";
@@ -50,5 +50,25 @@ public class Tennis {
 
     public void secondPlayerScore() {
         this.secondPlayerScoreTimes++;
+    }
+
+    private boolean isLookupScore() {
+        return firstPlayerScoreTimes < 4 && secondPlayerScoreTimes < 4;
+    }
+
+    private boolean isSameScore() {
+        return firstPlayerScoreTimes == secondPlayerScoreTimes;
+    }
+
+    private boolean isDeuce() {
+        return firstPlayerScoreTimes >= 3;
+    }
+
+    private String sameScore() {
+        return scoreLookup.get(firstPlayerScoreTimes) + " " + all;
+    }
+
+    private String lookupScore() {
+        return scoreLookup.get(firstPlayerScoreTimes) + " " + scoreLookup.get(secondPlayerScoreTimes);
     }
 }
